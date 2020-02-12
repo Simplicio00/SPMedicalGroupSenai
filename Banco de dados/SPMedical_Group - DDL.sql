@@ -26,6 +26,7 @@ IdEmpresa int foreign key references Empresa(IdEmpresa),
 IdTipoUsuario int foreign key references TipoUsuario(IdTipoUsuario),
 Email varchar(250) unique not null,
 Senha varchar(250) not null,
+Idade int
 )
 go
 
@@ -52,7 +53,7 @@ IdUsuario int foreign key references Usuario(IdUsuario),
 NomePaciente varchar(250) not null,
 RG varchar(100) not null,
 CPF varchar(100) not null,
-Telefone int not null,
+Telefone varchar(250) not null,
 Endereco varchar(250) not null
 )
 go
