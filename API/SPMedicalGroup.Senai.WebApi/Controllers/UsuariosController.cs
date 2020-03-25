@@ -37,19 +37,79 @@ namespace SPMedicalGroup.Senai.WebApi.Controllers
 
 
         [AllowAnonymous]
+        [HttpGet("Medicos")]
+        public IActionResult GetMedicos()
+        {
+            IActionResult empty = NoContent();
+            var lista = connect.GetMedicos();
+            if (lista.Count != 0)
+            {
+                return Ok(lista);
+            }
+            else
+            {
+                return empty;
+            }
+        }
+
+
+        [AllowAnonymous]
+        [HttpGet("Pacientes")]
+        public IActionResult GetPacientes()
+        {
+            IActionResult empty = NoContent();
+            var lista = connect.GetPaciente();
+            if (lista.Count != 0)
+            {
+                return Ok(lista);
+            }
+            else
+            {
+                return empty;
+            }
+        }
+
+
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Cadastrar(Usuario usuario)
         {
             var lista = connect.Get();
-            IActionResult result = BadRequest("Este endereço de E-Mail já está cadastrado");
 
 
             if (!lista.Contains(lista.FirstOrDefault(valor => valor.Email == usuario.Email)))
             {
                 try
                 {
+                    usuario.IdEmpresa = 1;
                     connect.Cadastro(usuario);
-                    return Ok($"O usuário com email:{usuario.Email} e senha: {usuario.Senha}, foi cadastrado com sucesso");
+
+                    if (usuario.CodigoEmpresa == "SPMedicalGroup5561x")
+                    {
+                        Medico medico = new Medico()
+                        {
+                            IdUsuario = usuario.IdUsuario,
+                            NomeMedico = "Modifique o seu nome",
+                            Crm = "xxxxxxxx",
+                            IdEspecialidade = 1,
+                        };
+                        connect.CadMedico(medico);
+                        return Ok($"O Usuário E-Mail: {usuario.Email} foi cadastrado como médico, o código {usuario.CodigoEmpresa} foi validado! ");
+                    }
+                    else
+                    {
+                        Paciente paciente = new Paciente()
+                        {
+                            IdUsuario = usuario.IdUsuario,
+                            NomePaciente = "Modifique o seu nome",
+                            Rg = "xxxxxxx",
+                            Telefone = "xxxxxx",
+                            Endereco = "xxxxxxx",
+                            Cpf = "xxxxxxx"
+                        };
+                        connect.CadPaciente(paciente);
+                        return Ok($"O Usuário E-Mail: {usuario.Email} foi cadastrado como Paciente, modifique as suas informações");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -58,7 +118,7 @@ namespace SPMedicalGroup.Senai.WebApi.Controllers
             }
             else
             {
-                return result;
+                return BadRequest("Este endereço de E-Mail já está cadastrado no sistema.");
             }
         }
     }

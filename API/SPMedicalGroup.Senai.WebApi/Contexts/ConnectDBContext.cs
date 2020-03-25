@@ -26,7 +26,6 @@ namespace SPMedicalGroup.Senai.WebApi.Domains
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=LUCASSOLIVEIRA\\SQLEXPRESS; Initial Catalog=SPMedicalGroup_Senai_Manha; integrated security=true;");
             }
         }
@@ -175,6 +174,10 @@ namespace SPMedicalGroup.Senai.WebApi.Domains
                     .IsUnique();
 
                 entity.Property(e => e.Adm).HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.CodigoEmpresa)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Email)
                     .IsRequired()

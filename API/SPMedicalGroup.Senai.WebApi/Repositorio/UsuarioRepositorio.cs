@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SPMedicalGroup.Senai.WebApi.Repositorio
 {
-	public class UsuarioRepositorio : IUsuario
+	public class UsuarioRepositorio : IUsuario, IMedico, IPaciente
 	{
 		ConnectDBContext Connect = new ConnectDBContext();
 
@@ -45,6 +45,52 @@ namespace SPMedicalGroup.Senai.WebApi.Repositorio
 				Connect.Add(usuario);
 				Connect.SaveChanges();
 				return usuario;
+			}
+			catch (Exception)
+			{
+				return null;
+			}
+		}
+
+
+
+		//Médicos
+
+		public List<Medico> GetMedicos()
+		{
+			try
+			{
+				return Connect.Medico.ToList();
+			}
+			catch (Exception)
+			{
+				return null;
+			}
+		}
+
+		public void CadMedico(Medico medico)
+		{
+			Connect.Add(medico);
+			Connect.SaveChanges();
+		}
+
+
+
+
+		//Pacientes
+
+		public void CadPaciente(Paciente paciente)
+		{
+			Connect.Add(paciente);
+			Connect.SaveChanges();
+		}
+
+
+		public List<Paciente> GetPaciente()
+		{
+			try
+			{
+				return Connect.Paciente.ToList();
 			}
 			catch (Exception)
 			{

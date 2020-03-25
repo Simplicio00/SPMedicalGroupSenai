@@ -55,7 +55,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZW1haWwuY29tIiwianRpIjoiMTEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNTg1MTA2NTU4LCJpc3MiOiJTUE1lZGljYWxHcm91cC5TZW5haS5XZWJBcGkiLCJhdWQiOiJTUE1lZGljYWxHcm91cC5TZW5haS5XZWJBcGkifQ.DtJNHA-ssgZqM-pxCQQaQm2ZZynG1z_WZeiY3k0xbts",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluaXN0cmFkb3JAZW1haWwuY29tIiwianRpIjoiMTEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNTg1MTc0MTE3LCJpc3MiOiJTUE1lZGljYWxHcm91cC5TZW5haS5XZWJBcGkiLCJhdWQiOiJTUE1lZGljYWxHcm91cC5TZW5haS5XZWJBcGkifQ.eJG-67zRaliRgZ8XMHSUq06CuGURvG-JeHA1hwk7KvM",
 									"type": "string"
 								}
 							]
@@ -82,13 +82,13 @@
 					"response": []
 				},
 				{
-					"name": "Cadastro",
+					"name": "Cadastro de Médico",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"Email\":\"miquelangelo@email.com\",\n\t\"Senha\":\"1234567\",\n\t\"Idade\": 26\n}",
+							"raw": "{\n\t\"Email\":\"JoaoAlberto@email.com\",\n\t\"Senha\":\"1234567\",\n\t\"Idade\": 23,\n\t\"CodigoEmpresa\":\"SPMedicalGroup5561x\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -105,6 +105,89 @@
 							"path": [
 								"api",
 								"Usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro de Paciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Email\":\"Enzo@email.com\",\n\t\"Senha\":\"1234567\",\n\t\"Idade\": 23,\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuarios"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Medicos",
+			"item": [
+				{
+					"name": "Listar Médicos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Usuarios/Medicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuarios",
+								"Medicos"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Pacientes",
+			"item": [
+				{
+					"name": "Listar Pacientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Usuarios/Pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuarios",
+								"Pacientes"
 							]
 						}
 					},

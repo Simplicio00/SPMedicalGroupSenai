@@ -20,7 +20,8 @@ IdEmpresa int foreign key references Empresa(IdEmpresa),
 Email varchar(250) unique not null,
 Senha varchar(250) not null,
 Idade int not null,
-Adm bit default 0
+Adm bit default 0,
+CodigoEmpresa varchar(30)
 )
 go
 

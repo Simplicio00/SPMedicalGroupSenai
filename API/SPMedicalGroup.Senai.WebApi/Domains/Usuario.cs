@@ -17,6 +17,7 @@ namespace SPMedicalGroup.Senai.WebApi.Domains
         public string Senha { get; set; }
         public int Idade { get; set; }
         public bool? Adm { get; set; }
+        public string CodigoEmpresa { get; set; }
 
         public Empresa IdEmpresaNavigation { get; set; }
         public ICollection<Medico> Medico { get; set; }
