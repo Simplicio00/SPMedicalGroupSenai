@@ -1,0 +1,16 @@
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\bin\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.deps.json
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\bin\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.runtimeconfig.json
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\bin\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.runtimeconfig.dev.json
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\bin\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.dll
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\obj\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.csprojAssemblyReference.cache
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\obj\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.RazorAssemblyInfo.cache
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\obj\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.RazorAssemblyInfo.cs
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\obj\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.AssemblyInfoInputs.cache
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\obj\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.AssemblyInfo.cs
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\obj\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.RazorTargetAssemblyInfo.cache
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\bin\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.pdb
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\obj\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.dll
+C:\Users\Acer\Documents\SENAI\Técnico em Desenvolvimento\escola\SPMedicalGroupSenai\API\SPMedicalGroup.Senai.WebApi\obj\Debug\netcoreapp2.1\SPMedicalGroup.Senai.WebApi.pdb

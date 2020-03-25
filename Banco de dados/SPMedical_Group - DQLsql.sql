@@ -59,4 +59,14 @@ inner join Usuario on Usuario.IdUsuario = Paciente.IdUsuario
 where Paciente.NomePaciente = @usuario;
 
 
-execute UserIdade 'Mariana';
+execute UserIdade 'Roberto Possarle';
+
+select * from Medico
+
+select Especialidade.NomeEspecialidade, Medico.NomeMedico from Medico 
+inner join Especialidade on Especialidade.IdEspecialidade = Medico.IdEspecialidade
+where NomeEspecialidade like '%P%'
+
+
+select Email, Adm from Usuario 
+

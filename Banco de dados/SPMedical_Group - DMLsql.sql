@@ -7,14 +7,13 @@ values('SP Medical Group - Clínica Possarle','86.400.902/0001-30','Av. Barão Lim
 
 go
 
-insert into TipoUsuario(Titulo)values('Administrador'),('Comum')
-
 
 go
-insert into Usuario(IdEmpresa,IdTipoUsuario,Idade,Email,Senha)values(1,2,30,'RobertoPossarle@email.com','rob123'),
-(1,2,24,'RicardoLemos@email.com','ric123'),(1,2,23,'HelenaStrada@email.com','ele123'),(1,2,14,'ligia@email.com','lig123'),
-(1,2,20,'Alexandre@email.com','ale123'),(1,2,40,'Fernando@email.com','fer123'),(1,2,35,'Henrique@email.com','hen123'),
-(1,2,25,'Joao@email.com','joa123'),(1,2,20,'Bruno@email.com','bru123'),(1,2,29,'Mariana@email.com','mar123')
+insert into Usuario(IdEmpresa,Idade,Email,Senha,Adm)values(1,30,'RobertoPossarle@email.com','rob123',0),
+(1,24,'RicardoLemos@email.com','ric123',0),(1,23,'HelenaStrada@email.com','ele123',0),(1,14,'ligia@email.com','lig123',0),
+(1,20,'Alexandre@email.com','ale123',0),(1,40,'Fernando@email.com','fer123',0),(1,35,'Henrique@email.com','hen123',0),
+(1,25,'Joao@email.com','joa123',0),(1,20,'Bruno@email.com','bru123',0),(1,29,'Mariana@email.com','mar123',0),
+(1,29,'administrador@email.com','adm123',1)
 
 
 go

@@ -14,19 +14,13 @@ EnderecoEmpresa varchar(250) not null
 )
 go
 
-create table TipoUsuario(
-IdTipoUsuario int identity primary key,
-Titulo varchar(50) unique not null,
-)
-go
-
 create table  Usuario(
 IdUsuario int identity primary key,
 IdEmpresa int foreign key references Empresa(IdEmpresa),
-IdTipoUsuario int foreign key references TipoUsuario(IdTipoUsuario),
 Email varchar(250) unique not null,
 Senha varchar(250) not null,
-Idade int
+Idade int not null,
+Adm bit default 0
 )
 go
 
