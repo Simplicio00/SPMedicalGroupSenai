@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 
 namespace SPMedicalGroup.Senai.WebApi
 {
@@ -25,7 +26,13 @@ namespace SPMedicalGroup.Senai.WebApi
 
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+			services.AddMvc()
+				.AddJsonOptions(options =>
+				{
+					options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+					options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+				})
+				.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
 			services.
 			 AddAuthentication(op => {

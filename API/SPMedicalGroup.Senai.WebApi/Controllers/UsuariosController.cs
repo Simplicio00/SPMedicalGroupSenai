@@ -75,7 +75,8 @@ namespace SPMedicalGroup.Senai.WebApi.Controllers
         public IActionResult Cadastrar(Usuario usuario)
         {
             var lista = connect.Get();
-
+            Random random = new Random();
+            var especialidade = random.Next(1, 18);
 
             if (!lista.Contains(lista.FirstOrDefault(valor => valor.Email == usuario.Email)))
             {
@@ -91,7 +92,7 @@ namespace SPMedicalGroup.Senai.WebApi.Controllers
                             IdUsuario = usuario.IdUsuario,
                             NomeMedico = "Modifique o seu nome",
                             Crm = "xxxxxxxx",
-                            IdEspecialidade = 1,
+                            IdEspecialidade = especialidade
                         };
                         connect.CadMedico(medico);
                         return Ok($"O Usuário E-Mail: {usuario.Email} foi cadastrado como médico, o código {usuario.CodigoEmpresa} foi validado! ");

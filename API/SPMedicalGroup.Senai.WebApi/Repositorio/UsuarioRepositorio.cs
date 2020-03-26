@@ -1,4 +1,5 @@
-﻿using SPMedicalGroup.Senai.WebApi.Domains;
+﻿using Microsoft.EntityFrameworkCore;
+using SPMedicalGroup.Senai.WebApi.Domains;
 using SPMedicalGroup.Senai.WebApi.Interface;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace SPMedicalGroup.Senai.WebApi.Repositorio
 		{
 			try
 			{
-				return Connect.Medico.ToList();
+				return Connect.Medico.Include(a => a.IdEspecialidadeNavigation).Include(a => a.IdUsuarioNavigation).ToList();
 			}
 			catch (Exception)
 			{
@@ -90,7 +91,7 @@ namespace SPMedicalGroup.Senai.WebApi.Repositorio
 		{
 			try
 			{
-				return Connect.Paciente.ToList();
+				return Connect.Paciente.Include(a => a.IdUsuarioNavigation).ToList();
 			}
 			catch (Exception)
 			{
