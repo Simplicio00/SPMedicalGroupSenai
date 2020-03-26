@@ -13,5 +13,9 @@ namespace SPMedicalGroup.Senai.WebApi.Interface
 		List<Usuario> Get();
 
 		Usuario Cadastro(Usuario usuario);
+
+		Usuario Modificar(int id, Usuario usuario);
+
+		Usuario GetUsuario(int id);
 	}
 }

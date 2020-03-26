@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using SPMedicalGroup.Senai.WebApi.Domains;
 using SPMedicalGroup.Senai.WebApi.Repositorio;
 
@@ -18,7 +20,7 @@ namespace SPMedicalGroup.Senai.WebApi.Controllers
     {
         UsuarioRepositorio connect = new UsuarioRepositorio();
 
-        [Authorize(Roles ="Administrador")]
+        [Authorize(Roles = "Administrador")]
         [HttpGet]
         public IActionResult Get()
         {
@@ -122,5 +124,26 @@ namespace SPMedicalGroup.Senai.WebApi.Controllers
                 return BadRequest("Este endereço de E-Mail já está cadastrado no sistema.");
             }
         }
+
+
+
+        [HttpPut]
+        public IActionResult Modificar(Usuario usuario)
+        {
+            var idUser = HttpContext.User.Claims.First(a => a.Type == "jti").Value;
+
+            try
+            {
+                connect.Modificar(int.Parse(idUser), usuario);
+                return Ok(string.Format($"{usuario.Senha} -- Usuário Modificado!"));
+            }
+            catch (Exception ex)
+            {
+                return Forbid(ex.Message);
+            }
+        }
+
+
+
     }
 }
