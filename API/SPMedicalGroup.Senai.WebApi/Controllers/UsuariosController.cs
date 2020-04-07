@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -38,7 +39,6 @@ namespace SPMedicalGroup.Senai.WebApi.Controllers
         }
 
 
-        [AllowAnonymous]
         [HttpGet("Medicos")]
         public IActionResult GetMedicos()
         {
@@ -55,7 +55,6 @@ namespace SPMedicalGroup.Senai.WebApi.Controllers
         }
 
 
-        [AllowAnonymous]
         [HttpGet("Pacientes")]
         public IActionResult GetPacientes()
         {
@@ -128,18 +127,89 @@ namespace SPMedicalGroup.Senai.WebApi.Controllers
 
 
         [HttpPut]
-        public IActionResult Modificar(Usuario usuario)
+        public IActionResult ModificarSenha(Usuario usuario)
         {
             var idUser = HttpContext.User.Claims.First(a => a.Type == "jti").Value;
 
             try
             {
                 connect.Modificar(int.Parse(idUser), usuario);
-                return Ok(string.Format($"{usuario.Senha} -- Usuário Modificado!"));
+                return Ok(string.Format($" Senha modificada "));
             }
             catch (Exception ex)
             {
-                return Forbid(ex.Message);
+                IActionResult result = Forbid(ex.Message);
+                return result;
+            }
+        }
+
+
+        [HttpPut("Medico")]
+        public IActionResult ModificarMedico(Medico medico)
+        {
+            var idUser = HttpContext.User.Claims.First(a => a.Type == "jti").Value;
+
+            try
+            {
+                connect.ModificarMedico(int.Parse(idUser), medico);
+                return Ok(string.Format($" O usuário {medico.NomeMedico} foi  modificado! "));
+            }
+            catch (Exception ex)
+            {
+                IActionResult result = Forbid(ex.Message);
+                return result;
+            }
+        }
+
+
+
+        [HttpPut("Paciente")]
+        public IActionResult ModificarPaciente(Paciente paciente)
+        {
+            var idUser = HttpContext.User.Claims.First(a => a.Type == "jti").Value;
+
+            try
+            {
+                connect.ModificarPaciente(int.Parse(idUser), paciente);
+                return Ok(string.Format($" O usuário {paciente.NomePaciente} foi  modificado! "));
+            }
+            catch (Exception ex)
+            {
+                IActionResult result = Forbid(ex.Message);
+                return result;
+            }
+        }
+
+
+        [HttpGet("Perfil")]
+        public IActionResult MinhaInfo()
+        {
+            var idUser = HttpContext.User.Claims.First(a => a.Type == "jti").Value;
+
+            try
+            { 
+                var sePaciente = connect.GetMedicoIndividual(int.Parse(idUser));
+                var seMedico = connect.GetPacienteIndividual(int.Parse(idUser));
+
+                if (sePaciente != null)
+                {
+                    return Ok(sePaciente);
+                }
+                else if(seMedico != null)
+                {
+                    return Ok(seMedico);
+                }
+                else
+                {
+                    var adm = connect.GetUsuario(int.Parse(idUser));
+                    return Ok(adm);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                IActionResult result = BadRequest($"Ocorreu um erro: {ex.Message}");
+                return result;
             }
         }
 

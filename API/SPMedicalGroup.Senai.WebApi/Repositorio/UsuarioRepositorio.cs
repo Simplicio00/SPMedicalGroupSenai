@@ -64,22 +64,19 @@ namespace SPMedicalGroup.Senai.WebApi.Repositorio
 				{
 					usuario1.Senha = usuario.Senha;
 					usuario1.Idade = usuario.Idade;
-					Connect.Update(usuario1);
-					Connect.SaveChanges();
 				}
 				else if (usuario.Senha == null)
 				{
 					usuario1.Idade = usuario.Idade;
-					Connect.Update(usuario1);
-					Connect.SaveChanges();
 				}
 				else if (usuario.Idade == 0)
 				{
 					usuario1.Senha = usuario.Senha;
-					Connect.Update(usuario1);
-					Connect.SaveChanges();
 				}
-				
+
+				Connect.Update(usuario1);
+				Connect.SaveChanges();
+
 				return usuario1;
 			}
 			catch (Exception)
@@ -120,7 +117,8 @@ namespace SPMedicalGroup.Senai.WebApi.Repositorio
 
 		public Medico GetMedicoIndividual(int id)
 		{
-			return Connect.Medico.FirstOrDefault(medico => medico.IdMedico == id);
+			return Connect.Medico.Include(a => a.IdUsuarioNavigation).Include(a => a.IdEspecialidadeNavigation)
+				.FirstOrDefault(medico => medico.IdUsuario == id);
 		}
 
 
@@ -128,8 +126,11 @@ namespace SPMedicalGroup.Senai.WebApi.Repositorio
 		{
 			try
 			{
-				Medico medico1 = Connect.Medico.FirstOrDefault(md => md.IdMedico == id);
-				medico1 = medico;
+				Medico medico1 = Connect.Medico.FirstOrDefault(md => md.IdUsuario == id);
+				medico1.NomeMedico = medico.NomeMedico;
+				medico1.IdEspecialidade = medico.IdEspecialidade;
+				medico1.Crm = medico.Crm;
+
 				Connect.Update(medico1);
 				Connect.SaveChanges();
 				return medico1;
@@ -165,5 +166,30 @@ namespace SPMedicalGroup.Senai.WebApi.Repositorio
 			}
 		}
 
+		public Paciente GetPacienteIndividual(int id)
+		{
+			return Connect.Paciente.Include(a => a.IdUsuarioNavigation).FirstOrDefault(pac => pac.IdUsuario == id);
+		}
+
+		public Paciente ModificarPaciente(int id, Paciente paciente)
+		{
+			try
+			{
+				Paciente paciente1 = Connect.Paciente.Include(a => a.IdUsuarioNavigation).FirstOrDefault(a => a.IdUsuarioNavigation.IdUsuario == id);
+				paciente1.IdUsuarioNavigation.Senha = paciente.IdUsuarioNavigation.Senha;
+				paciente1.NomePaciente = paciente.NomePaciente;
+				paciente1.Telefone = paciente.Telefone;
+				paciente1.Endereco = paciente.Endereco;
+				paciente1.Cpf = paciente.Cpf;
+
+				Connect.Update(paciente1);
+				Connect.SaveChanges();
+				return paciente1;
+			}
+			catch (Exception)
+			{
+				return null;
+			}
+		}
 	}
 }

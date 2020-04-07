@@ -11,5 +11,9 @@ namespace SPMedicalGroup.Senai.WebApi.Interface
 		void CadPaciente(Paciente paciente);
 
 		List<Paciente> GetPaciente();
+
+		Paciente GetPacienteIndividual(int id);
+
+		Paciente ModificarPaciente(int id, Paciente paciente);
 	}
 }

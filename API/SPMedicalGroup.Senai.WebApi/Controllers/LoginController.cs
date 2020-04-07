@@ -21,14 +21,32 @@ namespace SPMedicalGroup.Senai.WebApi.Controllers
         [HttpPost]
         public IActionResult Login(Usuario validar)
         {
-
             Usuario usuario = Connect.Autenticar(validar.Email, validar.Senha);
 
             if (usuario != null)
             {
+                
+                Medico medico = Connect.GetMedicoIndividual(usuario.IdUsuario);
+                Paciente paciente = Connect.GetPacienteIndividual(usuario.IdUsuario);
+
+                string nome;
                 string categoria;
                 var email = usuario.Email;
                 var id = usuario.IdUsuario.ToString();
+
+
+                if (medico != null)
+                {
+                    nome = medico.NomeMedico;
+                }
+                else if (paciente != null)
+                {
+                    nome = paciente.NomePaciente;
+                }
+                else
+                {
+                    nome = "Sys Admin";
+                }
 
                 if (usuario.Adm == true)
                 {
@@ -38,10 +56,12 @@ namespace SPMedicalGroup.Senai.WebApi.Controllers
                 {
                     categoria = "Comum";
                 }
-                
+
+
 
                 var claims = new[]
                 {
+                    new Claim(JwtRegisteredClaimNames.NameId, nome),
                     new Claim(JwtRegisteredClaimNames.Email, email),
                     new Claim(JwtRegisteredClaimNames.Jti, id),
                     new Claim(ClaimTypes.Role, categoria)
